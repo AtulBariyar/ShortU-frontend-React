@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import URLShortener from "./components/URLShortener";
+import Results from "./components/Results";
+import Features from "./components/Features";
+import Footer from "./components/Footer";
+import React from "react";
 
 function App() {
+  const [shortenedLinks, setShortenedLinks] = React.useState([]);
+
+  const handleShorten = (newLink) => {
+    setShortenedLinks([newLink, ...shortenedLinks]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <Navbar />
+      <Hero />
+      <URLShortener onShorten={handleShorten} />
+      <Results links={shortenedLinks} />
+      <Features />
+      <Footer />
     </div>
   );
 }
