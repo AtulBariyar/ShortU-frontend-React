@@ -7,7 +7,7 @@ export default function URLShortener({ onShorten, ref }) {
   const [loading, setLoading] = useState(false);
 
   const host = process.env.REACT_APP_HOST_NAME ;
-  console.log(host);
+  console.log("host name: "+host);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
